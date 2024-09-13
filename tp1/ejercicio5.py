@@ -10,3 +10,11 @@ obtiene sumando 1+2+3+4.
  Ambas funciones lambda reciben como único parámetro el número a evaluar y de
 vuelven True o False. No se permite utilizar ayudas externas a las mismas
 """
+
+#itera con una lista por comprensión validando si el producto de los consecutivos previos al numero son iguales al munero
+oblongo = lambda x: any([i * (i+1) == x for i in range(x)])
+
+#calcula mediante la formula de los triangulares, compara con el numero dado para ver si es igual, lo que da True
+triangular = lambda x: any([i * (i+1) // 2 == x for i in range(x)])
+
+
