@@ -18,56 +18,60 @@ caso contrario el camión no serán despachado por su alto costo.
 import random as rn
 
 
-def calcular_camiones(naranjas:int, cantidades:dict):
+def calcular_camiones(naranjas:int):
     peso_naranjas = [(lambda: rn.randint(150, 350))() for _ in range(naranjas)]
     #lista para guardar naranjas que cumplen con el peso
     para_cajon = []
     #lista de las que no cumplen y van para jugo
     para_jugo = []
-    #auxiliar para guardar naranjas que sobran
-    en_cajon = []
-    #contador de cajones que van al camion
-    cantidad_cajones = 0
-    #acumulador para medir el peso en los camiones
-    peso_total = 0
-    #lo que sobra cuando termino de llenar los camiones
-    sobrante = 0
+    #separa en dos listas las naranjas para jugo de las que van a cajones
+    for peso in peso_naranjas:
+        if 200 <= peso <= 300:
+            para_cajon.append(peso)
+        else:
+            para_jugo.append(peso)
+    #lo que sobra cuando lleno los cajones
+    sobrante = len(para_cajon) % 100
+    #calculo la cantidad de cajones llenos que hay
+    cajones_llenos = len(para_cajon) // 100
+    #sumo el peso de las naranjas que hay en los cajones que llené
+    peso_cajon = peso_por_cajon(cajones_llenos, para_cajon)
+    #divido el peso segun cuantos entran en los camiones
+    cantidad_camiones = llenar_camiones(peso_cajon)
+    return (sobrante,  cantidad_camiones)
+    
+
+def peso_por_cajon(cajones_llenos, para_cajon):
+    #el peso de cada cajon lleno de naranjas
+    peso_cajon = []
+    #sumo los primeros 100 valores y lo agrego
+    peso_cajon.append(sum(para_cajon[:cajones_llenos * 100]))
+    #itero por la cantidad de cajones para ir sumando los valores de la lista
+    for i in range(cajones_llenos):
+        #voy corriendo el indice en 100 valores
+        inicio = i * 100
+        fin = inicio + 100
+        #sumo los 100 valores
+        suma_cajon = sum(para_cajon[inicio:fin])
+        #los agrego a la lista
+        peso_cajon.append(suma_cajon)
+    return peso_cajon
+
+def llenar_camiones(peso_cajon):
     cantidad_camiones = 0
-    #separo las para jugo de las que van a cajones en dos listas
-    for naranja in peso_naranjas:
-        if 200 >= naranja <= 300:
-            para_cajon.append(naranja)
-        else:
-            para_jugo.append(naranja)
-    #contar cantidad de cajones
-    for naranja_cajon in para_cajon:
-        cajon = 0
-        if len(para_cajon) > 100:
-            while cajon < 100 and peso_total < 500000:
-                peso_total += naranja_cajon
-                cajon += 1
-                #en_cajon es una variable auxiliar por si sobran caundo se completa el peso
-                en_cajon.append(naranja_cajon)
-                para_cajon.remove(naranja_cajon)
-            #comprueba que el peso sea menor a 500kg
-            if peso_total < 500000:
-                cantidad_cajones += 1
-            #suma camiones
-            elif peso_total > (500000 * 0,8):
+    for cajon in peso_cajon:
+        peso_camion = 0
+        while peso_camion < 500000:
+            peso_camion += cajon
+            if peso_camion > 500000 * 0.8:
                 cantidad_camiones += 1
-            else:
-                para_cajon += en_cajon
-        #si no hay 100 para llenar un cajon que se guarde como el sobrante
-        else:
-            sobrante = para_cajon
+                break
+    return cantidad_camiones
 
+def coso() -> None:
+    naranjas = int(input("Ingrese la cantidad de naranjas: "))
+    cantidad_camiones = calcular_camiones(naranjas)
+    print(f"Cantidad de camiones a llenar es {cantidad_camiones[1]}")
+    print(f"Sobran {cantidad_camiones[0]} naranjas")
 
-
-
-
-cantidades = {
-    "kilos": 500,
-    "cantidad": 100,
-    "min": 200,
-    "max": 300
-}
+coso()
