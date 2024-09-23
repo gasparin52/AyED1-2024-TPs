@@ -49,7 +49,7 @@ def intercambiar_filas(matriz):
     matriz[fila2] = aux
     return matriz
 
-#d. intercambiar los elementod e una comlumna
+#d. intercambiar los elementos de una comlumna
 def intercambiar_columnas(matriz):
     columna1 = int(input("Ingrese primer columna: "))
     columna2 = int(input("Ingrese segunda columna: "))
