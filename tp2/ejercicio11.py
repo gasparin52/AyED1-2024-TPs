@@ -85,7 +85,7 @@ def buscar_veces(registro_clinica:dict) -> None:
         afiliado = input("ingrese un numero de afiliado a buscar(-1 para salir): ")
         if afiliado != "-1":
             turno = 0
-            urgencia = 0 
+            urgencia = 0
             #recorro el diccionario extrayendo las keys y los valores
             for clave, valor in registro_clinica.items():
                 if clave == afiliado:

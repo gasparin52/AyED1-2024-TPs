@@ -53,11 +53,50 @@ def generar_matriz_e(filas:int , columnas:int):
     #rellena la matriz con 0
     matriz = [[0 for _ in range(filas)] for _ in range(columnas)]
     #todavia no se que hace
-    for i in range(columnas):
-        for x in range(i, columnas, 2):
-            matriz[i][x] = i+1
-            matriz[x][i] = i
+    for i in range(filas // 2):
+        for x in range(filas // 2):############################## a revisar...
+            #quesesto por dios....
+            #añado a las primeras dos filas de las dos primeras columnas
+            #paso a las dos proximas colimnas de la misma fila
+            #despues hago los mismo con las oltimas dos filas
+            matriz[i+i][1+x+x] = (1+x)+(i*filas)
+            matriz[1+i+i][x+x] = (filas-1+x)+(i*columnas)
     return matriz
+
+def generar_matriz_f(filas:int, columnas:int):
+    #creo la matriz y ya relleno con 0 segun los valores ingresados
+    matriz = [[0 for _ in range(filas)] for _ in range(columnas)]
+    num = 0
+    for i in range(columnas):
+        #itero en forma creciente de derecha a izquierda
+        for x in range(i+1):
+            #uso un contador para contar hasta 10
+            num +=1
+            matriz[i][filas-1-x] = num
+    return matriz
+
+def generar_matriz_g(filas:int, columnas:int):
+    num = 0
+    num2 = 0
+    matriz = [[0 for _ in range(columnas)] for _ in range(filas)]
+    for i in range(columnas):
+        for x in range(i, filas):
+            num += 1
+            matriz[i][x] = num
+            print(num, "caco")
+            num += 1
+            matriz[x][filas-1- x] = num
+            print(num)
+            num += 1
+            matriz[columnas-1- x][filas-1-x] = num
+            print(num)
+            num += 1
+            matriz[i][filas-1-x] = num
+            num += 1
+            print(num)
+            print(matriz)
+    return matriz
+
 
 
 filas = int(input("ingrese numero de filas: "))
@@ -68,10 +107,12 @@ matriz_b = generar_matriz_b(filas, columnas)
 matriz_c = generar_matriz_c(filas, columnas)
 matriz_d = generar_matriz_d(filas, columnas)
 matriz_e = generar_matriz_e(filas, columnas)
+matriz_f = generar_matriz_f(filas, columnas)
+matriz_g = generar_matriz_g(filas, columnas)
 
 #imprimo la matriz a para comprobarla
 #for filas in matriz_a:
 #    print(filas)
 
-for filas in matriz_e:
+for filas in matriz_g:
     print(filas)
