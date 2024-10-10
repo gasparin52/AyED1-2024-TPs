@@ -81,21 +81,9 @@ def generar_matriz_g(filas:int, columnas:int):
     matriz = [[0 for _ in range(columnas)] for _ in range(filas)]
     for i in range(columnas):
         for x in range(i, filas):
-            num += 1
-            matriz[i][x] = num
-            print(num, "caco")
-            num += 1
-            matriz[x][filas-1- x] = num
-            print(num)
-            num += 1
-            matriz[columnas-1- x][filas-1-x] = num
-            print(num)
-            num += 1
-            matriz[i][filas-1-x] = num
-            num += 1
-            print(num)
-            print(matriz)
+            pass##################################
     return matriz
+
 
 
 
