@@ -49,9 +49,25 @@ def filtrar_palabras_b(frase:str, n:int) -> str:
             nueva_frase += palabra + " "
     return nueva_frase
 
+def filtrar_palabras_c(frase:str, n:int) -> str:
+    """
+    Dado un entero y una frase, devuelve las palabras que tenga el mismo numero de carecteres
+    que la cantidad del numero dado.
+
+    pre: recive un str con una frase y un entero.
+
+    post: devielve una str con las palabras que cumplan con la cantidad de caracteres. 
+    """  
+    nueva_frase = ""
+    lista_palabras = [palabra.strip(string.punctuation) for palabra in frase.split()]
+    palabras = filter(lambda palabra: len(palabra) >= n, lista_palabras)
+    for p in palabras:
+        nueva_frase += p + " "
+    return nueva_frase
+
 
 
 
 frase = "Una vez que pruebas las moras frescas, no vuelves a tocar las enlatadas"
 
-print(filtrar_palabras_b(frase, 4))
+print(filtrar_palabras_c(frase, 4))
