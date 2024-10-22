@@ -16,7 +16,9 @@ def ordenar_frase(frase:str) -> str:
     #creo una lista de las palabras separadas, quitando los signos y puntuaciones
     lista_palabras = [palabra for palabra in frase.split()]
     lista_limpia = [palabra.strip(string.punctuation) for palabra in frase.split()]
-    lista_limpia = sorted(lista_limpia, key=len)
+    lista_limpia = sorted(lista_limpia, key=lambda x: ) ##############################
+    
+
     for palabra in lista_palabras:
         nueva_frase += palabra + " "
     return nueva_frase
