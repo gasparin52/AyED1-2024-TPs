@@ -11,7 +11,7 @@ def meses(n_mes: int) -> str:
     contiene una lista de meses del año, recibe un nomero y devuelve el mes del año al que le
     corresponta o un str vacío.
 
-    pre: recive un entero
+    pre: recibe un entero
 
     post: devuelve un string
     """
