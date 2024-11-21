@@ -26,6 +26,10 @@ superan la estatura promedio general. Obtener los datos del segundo archivo
 """
 import re
 
+ALTURAS = 'alturas.txt'
+DEPORTES = 'deportes.txt'
+PROMEDIOS = 'promedios.txt'
+
 def es_num(dato: str) -> bool:
     """
     comprueba si el dato que recibe es un numero
@@ -37,20 +41,32 @@ def es_num(dato: str) -> bool:
     num = r'^(100|[1-2]\d{2}|3[0-4]\d|350)$'
     return bool(re.match(num, dato))
 
-def deporte_valido(deporte: str)-> bool:
+
+
+def deporte_valido(entrada: str, deportes)-> bool:
     """
-    contrato
+    busca si el deporte ingresado figura en la lista de deportes validos
+
+    pre: recibe un string y una lista
+
+    post: devuelve un bool
     """
-    valido = #expresion######################
-    return bool(re.match(valido, deporte))
+    return bool(next((deporte for deporte in deportes if deporte == entrada), None))
+
+
 
 def leer_txt(ruta: str)-> list[str]:
     """
-    contrato
+    lee el archivo y carga en una lista
+
+    pre: recibe un string con la ruta
+
+    post: decuelve una lista con los elementos de la ruta
     """
     with open(ruta, 'r') as archivo:
         lista = archivo.readlines()
     return lista
+
 
 def escribir_txt(ruta: str)-> None:
     """
@@ -62,13 +78,15 @@ def escribir_txt(ruta: str)-> None:
 
 
 
-
-
 def grabar_rango_alturas():
 
     pass
 
 def grabar_promedio():
+    pass
+
+
+def mostrar_altos():
     pass
 
 def incorrecto()-> None:
@@ -77,6 +95,8 @@ def incorrecto()-> None:
     """
     print("Valor ingresado incorrecto")
     return None
+
+
 
 def ingresar_datos() -> list:
     """
