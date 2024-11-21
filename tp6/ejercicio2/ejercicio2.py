@@ -11,11 +11,11 @@ memoria.
 
 def leer_archivo() -> list[str]:
     """
-    contrato
+    lee el archivo y lo guarda en una lista
 
-    pre:
+    pre: no recive nada
 
-    post:
+    post: devuelve una lista
     """
     contenido = []
     try:
@@ -66,23 +66,35 @@ def dividir_archivo() -> None:
 
     post: no devuelve nada
     """
+    #leo el archivo
     archivo = leer_archivo()
-    divisor = cantidad_divisiones()
-    cantidad = division(archivo, divisor)
-    #lineas = len(archivo) // cantidad
-    cont = 0 
-    print(cantidad)
-    print(len(archivo))
-    for i in range(cantidad):
+    #pido la cantidad de partes en la que quiere que se deivida
+    partes = cantidad_divisiones()
+    #calculo la cantidad mediante la funcion dividir
+    cantidad = division(archivo, partes)
+    #contador para registrar lo que ya guardé
+    cont = 0
+    #itero por la cantidad de archivos que quiero crear
+    for i in range(partes):
+        #creo los archivos
         with open(f'parte{i+1}.txt','w') as arch_txt:
-            for j in range(cantidad):
+            #agrego las lineas a los archivos
+            for _ in range(cantidad):
                 try:
-                    #arch_txt.write(archivo[j+cont])
+                    arch_txt.write(archivo[cont])
+                    cont+=1
                     print(cont)
                 except IndexError as e:
                     print(f"Error: {e}")
-
-
-print(dividir_archivo())
-
-print(18//4)
+    sobrante = len(archivo) % partes
+    #compruebo que hayan lineas que no hayan entrado en los archivos anteriores
+    if sobrante > 0:
+        #creo un archivo con las lineas que no entraeonne en los archivos anteriores
+        with open(f'parte{i+2}.txt','w') as arch_txt:
+            try:    
+                for _ in range(sobrante):
+                    arch_txt.write(archivo[cont])
+                    cont+=1
+            except IndexError as e:
+                print(f"Error: {e}")
+    return None

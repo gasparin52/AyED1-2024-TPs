@@ -51,7 +51,7 @@ def cargar_apellidos() -> None:
         if apellido[-3:].lower() == "ian":
             try:
                 #abro el archivo y agrego el nombre completo
-                with open('ARMENIA.TXT', 'a') as armenia:
+                with open('ARMENIA.TXT', 'a') as armenia:################### hacer una sola funcion reutilizable
                     armenia.write(f"{nombre},{apellido}\n")
             except FileNotFoundError:
                 print("Archivo no encontrado")
