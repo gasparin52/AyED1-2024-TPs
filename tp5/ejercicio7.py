@@ -7,3 +7,4 @@ adivinarlo, se debe imprimir en pantalla la cantidad de intentos que le tomó ha
 el  número.  Si  el  usuario  introduce  algo  que  no  sea  un  número  se  mostrará  un 
 mensaje en pantalla y se lo contará como un intento más.
 """
+
