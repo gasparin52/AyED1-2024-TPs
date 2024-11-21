@@ -57,7 +57,7 @@ def deporte_valido(entrada: str, deportes)-> bool:
 
 def leer_txt(ruta: str)-> list[str]:
     """
-    lee el archivo y carga en una lista
+    lee el archivo y lo carga en una lista
 
     pre: recibe un string con la ruta
 
@@ -68,12 +68,16 @@ def leer_txt(ruta: str)-> list[str]:
     return lista
 
 
-def escribir_txt(ruta: str)-> None:
+def escribir_txt(ruta: str, lista: list[str])-> None:
     """
-    contrato
+    agrega al archivo loe elementos
+
+    pre: recibe un string con la ruta
+
+    post: decuelve una lista con los elementos de la ruta
     """
     with open(ruta, 'a') as archivo:
-        lista = archivo.readlines()
+        lista
     return lista
 
 
