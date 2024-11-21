@@ -34,7 +34,7 @@ def es_num(dato: str) -> bool:
 
     post: devuelve un booleano
     """
-    num = #expresion#########################
+    num = r'^(100|[1-2]\d{2}|3[0-4]\d|350)$'
     return bool(re.match(num, dato))
 
 def deporte_valido(deporte: str)-> bool:
