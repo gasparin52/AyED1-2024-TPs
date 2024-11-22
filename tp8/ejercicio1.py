@@ -27,6 +27,7 @@ meses = (
     (12, 31)
 )
 
+
 def formato_fecha(fecha: str)-> bool:
     """
     valida que la fecha sea correcta
@@ -75,6 +76,7 @@ def ingresar_hora() -> tuple:
     hora = tuple(map(int, hora.split(":")))
     return hora
 
+
 def cantidad_dias()-> int:
     """
     pide la cantidad de dias a dumar y los valida
@@ -91,6 +93,28 @@ def cantidad_dias()-> int:
         print("valor ingresado invelido...")
         cantidad_dias()
     return numero
+
+def diferencia_horario()-> tuple:
+    """
+    calcula la diferncia entre dos horarios
+
+    pre: no recibe nada
+
+    post: devuelve una tupla
+    """
+    hora1, min1 = ingresar_hora()
+    hora2, min2 = ingresar_hora()
+    if hora1 < hora2:
+        hora1 += 24
+    hora = hora1 - hora2
+    if min1 < min2:
+        min += 60
+        hora -= 1
+    minutos = min1 - min2
+
+    return (hora, minutos)
+
+
 
 
 def sumar_dias(meses: tuple[tuple[int, int]])-> tuple:
@@ -122,6 +146,12 @@ def sumar_dias(meses: tuple[tuple[int, int]])-> tuple:
             dias = cantidad
             return (dias, mes, anio)
 
+
+
+
 dias, mes, anio = sumar_dias(meses)
+hora, minutos = diferencia_horario()
 
 print(f"{dias}/{mes}/{anio}")
+
+print(f"{hora}:{minutos}")

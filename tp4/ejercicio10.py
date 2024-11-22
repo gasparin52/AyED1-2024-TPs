@@ -24,6 +24,6 @@ palabra = "hola"
 
 palabra_nueva = "chau"
 
-cadena = "hola como esetas bro hola"
+cadena = "hola como estas bro hola"
 
 print(cambiar_palabra(palabra, palabra_nueva, cadena))
