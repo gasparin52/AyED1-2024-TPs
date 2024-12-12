@@ -6,7 +6,7 @@ cerse como N x N, donde N se ingresa a través del teclado
 #consultar las matrices de la hoja.
 """
 
-def generar_matriz_a(filas:int , columnas:int):
+def generar_matriz_a(filas:int , columnas:int)-> list[list[int]]:
     #genera una matriz con una columna de numeros impares
     matriz = [[1+i+i] for i in range(filas)]
     #relleno con 0 todos los valores que no pertenzcan a la diagonal principal
@@ -17,7 +17,7 @@ def generar_matriz_a(filas:int , columnas:int):
     return matriz
 
 
-def generar_matriz_b(filas:int , columnas:int):
+def generar_matriz_b(filas:int , columnas:int)-> list[list[int]]:
     #rellena la matriz con 0 en los lugares faltantes
     matriz = [[0 for _ in range(columnas)] for _ in range(filas)]
     #añade en las posiciones requeridas multiplos de 3
@@ -26,7 +26,7 @@ def generar_matriz_b(filas:int , columnas:int):
         matriz[columnas - i - 1][i] = 3 ** i
     return matriz
 
-def generar_matriz_c(filas:int , columnas:int):
+def generar_matriz_c(filas:int , columnas:int)-> list[list[int]]:
     #agrega por fila un nuemero en decremento segun la cantidad ingresada
     matriz = [[filas - i] for i in range(filas)]
     #recorre indices de la las filas y columnas restantes
@@ -38,7 +38,7 @@ def generar_matriz_c(filas:int , columnas:int):
             matriz[x].insert(i, columnas - x)
     return matriz
 
-def generar_matriz_d(filas:int , columnas:int):
+def generar_matriz_d(filas:int , columnas:int)-> list[list[int]]:
     #creo una matriz con listas vacias
     matriz = [[] for _ in range(filas)]
     #agrego los multiplos de 2 de forma descendente
@@ -49,7 +49,7 @@ def generar_matriz_d(filas:int , columnas:int):
             matriz[columnas - 1 - i].insert(x, 2 ** i)
     return matriz
 
-def generar_matriz_e(filas:int , columnas:int):
+def generar_matriz_e(filas:int , columnas:int)-> list[list[int]]:
     #rellena la matriz con 0
     matriz = [[0 for _ in range(filas)] for _ in range(columnas)]
     #todavia no se que hace
@@ -63,7 +63,7 @@ def generar_matriz_e(filas:int , columnas:int):
             matriz[1+i+i][x+x] = (filas-1+x)+(i*columnas)
     return matriz
 
-def generar_matriz_f(filas:int, columnas:int):
+def generar_matriz_f(filas:int, columnas:int)-> list[list[int]]:
     #creo la matriz y ya relleno con 0 segun los valores ingresados
     matriz = [[0 for _ in range(filas)] for _ in range(columnas)]
     num = 0
@@ -75,13 +75,14 @@ def generar_matriz_f(filas:int, columnas:int):
             matriz[i][filas-1-x] = num
     return matriz
 
-def generar_matriz_g(filas:int, columnas:int):
+def generar_matriz_g(filas:int, columnas:int)-> list[list[int]]:
     num = 0
     num2 = 0
     matriz = [[0 for _ in range(columnas)] for _ in range(filas)]
-    for i in range(columnas):
+    while num < (columnas * filas):
         for x in range(i, filas):
-            pass##################################
+            num +=1
+            matriz[i][filas-1-x] = num
     return matriz
 
 
