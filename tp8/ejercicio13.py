@@ -4,3 +4,4 @@ valor, y devuelva una lista de claves que apunten ("mapeen") a ese valor en el d
 cionario. Comprobar el comportamiento de la función mediante un programa apro-
 piado
 """
+
